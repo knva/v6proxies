@@ -35,7 +35,7 @@ echo "==========================================="
 
 echo "=========== Install Python requirements ================="
 cd /opt/
-git clone https://github.com/nguyenanhung/v6proxies.git v6proxies
+git clone https://github.com/knva/v6proxies.git v6proxies
 cd /opt/v6proxies
 pip3 install --upgrade pip setuptools
 pip3 install -r requirements.txt
