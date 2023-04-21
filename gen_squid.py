@@ -32,6 +32,7 @@ password = args.password
 
 sh_add_ip = f'add_ip_{pool_name}.sh'
 
+sh_del_ip = f'del_ip_{pool_name}.sh'
 
 def gen_ipv6(ipv6_subnet):
     seed()
@@ -49,7 +50,9 @@ def add_ipv6(num_ips, unique_ip=1):
     if os.path.exists(path=sh_add_ip):
         os.remove(path=sh_add_ip)
         print("%s exists. Removed" % sh_add_ip)
-
+    if os.path.exists(path=sh_del_ip):
+        os.remove(path=sh_del_ip)
+        print("%s exists. Removed" % sh_del_ip)
     if unique_ip == 1:
 
         subnet = choices(list_network2, k=num_ips)
@@ -62,6 +65,9 @@ def add_ipv6(num_ips, unique_ip=1):
 
             with open(sh_add_ip, 'a') as the_file:
                 the_file.write(cmd + '\n')
+            rm = f'ip -6 addr del {ipv6} dev {net_interface}'
+            with open(sh_del_ip, 'a') as the_file:
+                the_file.write(rm + '\n')
 
     else:
 
@@ -77,6 +83,11 @@ def add_ipv6(num_ips, unique_ip=1):
             cmd = f'ip -6 addr add {ipv6} dev {net_interface}'
             with open(sh_add_ip, 'a') as the_file:
                 the_file.write(cmd + '\n')
+            
+            rm = f'ip -6 addr del {ipv6} dev {net_interface}'
+            with open(sh_del_ip, 'a') as the_file:
+                the_file.write(rm + '\n')
+            
     return list_ipv6
 
 
