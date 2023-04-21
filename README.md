@@ -102,6 +102,16 @@ bash /opt/v6proxies/add_ip_squidv6.sh
 /usr/local/squid/sbin/squid -f /etc/squid/squid-squidv6.conf
 ```
 
+### Remove Proxy ip 
+
+Add by @knva
+
+```shell script
+bash del_ip_squidv6.sh
+```
+If you Reset proxy ip group， you shoud be use this shell.
+
+
 ### Testing
 
 ```shell script
